@@ -88,12 +88,12 @@ function displayMessage(){
         if (themsg.startsWith("https://www.youtube.com")) {
             let result = themsg.split('=');
             let videoId = result[1];
-            window.location = "/video-sync/?text=" + videoId;
+            window.location = "/?text=" + videoId;
 
         }
     }
     else {
-        window.location = "/video-sync/?text=" + themsg;
+        window.location = "/?text=" + themsg;
         }
 }
 </script>
