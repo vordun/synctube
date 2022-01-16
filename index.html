@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>VideoSync</title>
+  <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.">
+  <meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=1.0, maximum-scale=1.5">
+</head>
+
+<body>
+
+<div id="player1"></div>
+<p>Enter a YouTube Video URL:</p>
+
+<input type="text" id="msg" ><br>
+<button onclick="displayMessage()">Click me</button>
+<p id="showinputhere"></p>
+
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="videosync.js"></script>
+
+<script>
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+function getUrlParam(parameter, defaultvalue){
+    var urlparameter = defaultvalue;
+    if(window.location.href.indexOf(parameter) > -1){
+        urlparameter = getUrlVars()[parameter];
+        }
+    return urlparameter;
+}
+</script>
+
+<script>
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var playerVars = {
+        modestbranding: 1,
+        theme: 'light',
+        showinfo: 0,
+        rel: 0,
+        fs: 0
+    };
+
+
+    let uuid = window.localStorage.getItem('uuid');
+    console.debug(uuid)
+    if (uuid === undefined) {
+        uuid = Math.random().toString();
+        console.debug(uuid)
+	window.localStorage.setItem("uuid", uuid);
+    }
+
+    var vidSync1 = new VideoSync("roomroom", uuid);
+
+    var player1;
+    var myId = window.getUrlParam('text', "zZ2mSK_ydLc");
+
+    function onYouTubeIframeAPIReady() {
+        player1 = new YT.Player('player1', {
+            videoId: myId,
+            playerVars: playerVars,
+            events: {
+                'onReady': vidSync1.onPlayerReady,
+                'onStateChange': vidSync1.onPlayerStateChange
+            }
+        });
+
+    }
+</script>
+
+<script>
+function displayMessage(){
+    let themsg = document.getElementById("msg").value;
+    if (themsg){
+        document.getElementById("showinputhere").innerHTML = themsg;
+        if (themsg.startsWith("https://www.youtube.com")) {
+            let result = themsg.split('=');
+            let videoId = result[1];
+            window.location = "/video-sync/?text=" + videoId;
+
+        }
+    }
+    else {
+        window.location = "/video-sync/?text=" + themsg;
+        }
+}
+</script>
+
+</body>
+</html>
