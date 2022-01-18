@@ -13,7 +13,7 @@ SycTube requires a free subscription to PubNub and Netlify. PubSub acts as a sta
 ## Installation
 
 
-Edit videosync.js and replae the publish and subsribe keys with the ones you generate in your account on PubNub (pubnub.com). Upload index.html and videosync.js to Netfliy (this can be done by connecting your github account and simply sending a push).
+Edit videosync.js and replace the publish and subsribe keys with the ones you generate in your account on PubNub (pubnub.com). Upload index.html and videosync.js to Netfliy (this can be done by connecting your github account and simply sending a push).
 
 Create a box prim in Second Life, shape it like a rectangle and add the following script:
 
@@ -27,5 +27,4 @@ Create a box prim in Second Life, shape it like a rectangle and add the followin
 
         }
     }
-
 
