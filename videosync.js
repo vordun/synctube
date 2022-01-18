@@ -1,29 +1,18 @@
-// VideoSync is an API that synchronizes the playback of embedded 
-// YouTube videos across multiples browsers.
+// Author: Carrie Vordun
+// VideoSync is an API that synchronizes the playback of embedded YouTube videos across multiples browsers.
 // 
-// You can check out the demo right [here](http://larrywu.com/videosync/), or
-// view the source on [Github](https://github.com/lw7360/videosync/)
-
-
-// Setup
-// ---
-// roomId is the name of the channel you want to use.
-// userId is an optional variable that will identify individual users of VideoSync.
 function VideoSync(roomId, userId) {
-    // If no userId is provided, generate a simple random one with Math.random.
     if (userId === undefined) {
         userId = Math.random().toString();
 	window.localStorage.setItem("uuid", userId);
 
     }
 
-    // A variable that will be set to the YouTube player object.
     var player;
 
-    // Initializing PubNub with demo keys and our userId.
     var pubnub = PUBNUB.init({
-        publish_key: 'pub-c-7c0f9037-8c4a-4bda-ac6d-26045109d27d',
-        subscribe_key: 'sub-c-a61ecc0a-6cd2-11ec-a2db-9eb9413efc82',
+        publish_key: 'pub-c-NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN',
+        subscribe_key: 'sub-c-NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN',
         uuid: userId,
         ssl: true
     });
