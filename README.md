@@ -7,7 +7,7 @@
 SyncTube is software used to view Youtube videos in sync with multiple avatars in Second Life. You can play, stop, pause, fast forward and rewind videos and all watchers' televisions will be in sync within miliseconds.
 
 
-SycTube requires a free subscription to PubNub and Netlify. PubSub acts as a state machine to keep track of all televisions and sends messages to each whenever the state changes (pause, play etc.).
+SycTube requires a free subscription to PubNub and Netlify. PubSub acts as a state machine to keep track of all televisions and sends messages to each whenever the state changes (pause, play etc.). Netlify is used to host the website files for free. If you already have your own server on the internet, Netlify isn't necessary.
 
 
 ## Installation
